@@ -31,11 +31,11 @@ func main() {
 
 	w := bufio.NewWriter(outfile)
 
-	linemap := make(map[string]int)
+	var lastline = ""
 	for _, line := range lines {
-		if _, contains := linemap[line]; !contains {
-			linemap[line] = 1
+		if line != lastline {
 			fmt.Fprintln(w, line)
+			lastline = line
 		}
 	}
 
